@@ -16,6 +16,29 @@ int print_char(char c)
 }
 
 /**
+ * print_string - prints a string.
+ *
+ * @str: inputs char pointer.
+ *
+ * Return: number of printed characters.
+*/
+
+int print_string(char *str)
+{
+	int i;
+
+	if (str == NULL)
+		str = "(null)";
+
+	for (i = 0; str[i]; i++)
+	{
+		_putchar(str[i]);
+	}
+
+	return (i);
+}
+
+/**
  * _printf - custom printf .
  *
  * @format: inputs formated string.
@@ -45,6 +68,13 @@ int _printf(const char *format, ...)
 			{
 			case 'c':
 					sum += print_char((char)va_arg(v, int));
+					break;
+			case 's':
+					sum += print_string((char *)va_arg(v, char *));
+					break;
+			case '%':
+					_putchar('%');
+					sum++;
 					break;
 			default:
 					break;

@@ -72,6 +72,10 @@ int _printf(const char *format, ...)
 			case 's':
 					sum += print_string((char *)va_arg(v, char *));
 					break;
+			case '%':
+					_putchar('%');
+					sum++;
+					break;
 			default:
 					break;
 			}
