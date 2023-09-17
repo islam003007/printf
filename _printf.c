@@ -79,7 +79,11 @@ int _printf(const char *format, ...)
 					_putchar('%');
 					sum++;
 					break;
+			case 0:
+					return (-1);
 			default:
+					_putchar('%');
+					sum++;
 					break;
 			}
 		}

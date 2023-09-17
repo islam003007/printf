@@ -10,8 +10,8 @@ int main(void)
 {
 	int num1, num2;
 
-	num1 = _printf("%c", NULL);
-	num2 = printf("%c", NULL);
+	num1 = _printf("%", 6);
+	num2 = printf("%", 6);
 	printf("%i %i\n", num1, num2);
 
 
