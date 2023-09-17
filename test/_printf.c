@@ -52,6 +52,9 @@ int _printf(const char *format, ...)
 	int i;
 	int sum = 0;
 
+	if (format == NULL)
+		return (-1);
+
 	va_start(v, format);
 
 	for (i = 0; format[i]; i++)
