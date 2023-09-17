@@ -17,9 +17,7 @@ int print_char(char c)
 
 /**
  * print_string - prints a string.
- *
  * @str: inputs char pointer.
- *
  * Return: number of printed characters.
 */
 
@@ -51,10 +49,8 @@ int _printf(const char *format, ...)
 	va_list v;
 	int i;
 	int sum = 0;
-
 	if (format == NULL)
 		return (-1);
-
 	va_start(v, format);
 
 	for (i = 0; format[i]; i++)
