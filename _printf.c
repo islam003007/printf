@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdarg.h>
 
 /**
  * print_char - prints a character.
@@ -53,6 +54,7 @@ int _printf(const char *format, ...)
 	int sum = 0;
 
 	if (format == NULL)
+		printf("Error: NULL format string\n");
 		return (-1);
 
 	va_start(v, format);
@@ -70,7 +72,7 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 			case 'c':
-					sum += print_char((char)va_arg(v, int));
+					sum += print_char(va_arg(v, int));
 					break;
 			case 's':
 					sum += print_string((char *)va_arg(v, char *));
