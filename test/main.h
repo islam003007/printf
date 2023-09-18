@@ -13,5 +13,6 @@ int print_binary(unsigned int num);
 int print_char(char c);
 int print_string(char *str);
 int print_format(char c, va_list v);
+int print_p(int *ptr);
 
 #endif
