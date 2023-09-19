@@ -27,12 +27,17 @@ int handle_int(int num);
 int print_binary(va_list v);
 int print_char(va_list v);
 int print_string(va_list v);
+int print_STRING(va_list v);
 int print_unsigned_int(va_list v);
 int handle_unsigned_int(unsigned int num);
 int print_octal(va_list v);
 int print_hex(va_list v);
 int print_HEX(va_list v);
 int print_percent(va_list v);
+int print_reversed(va_list v);
+int print_rot(va_list v);
+int handle_hex_long(unsigned long int num);
+int print_pointer(va_list v);
 int print_default(char c);
 
 #endif
