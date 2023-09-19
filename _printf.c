@@ -14,6 +14,7 @@ int _printf(const char *format, ...)
 	va_list v;
 	int i;
 	int sum = 0;
+	int (*ptr)(va_list);
 
 	if (format == NULL)
 		return (-1);
@@ -32,10 +33,15 @@ int _printf(const char *format, ...)
 			i++;
 			if (!format[i])
 				return (-1);
-			sum += print_format(format[i], v);
+
+			ptr = print_format(format[i]);
+
+			if (ptr == NULL)
+				sum += print_default(format[i]);
+			else
+				sum += ptr(v);
 		}
 	}
-
 	va_end(v);
 	return (sum);
 }

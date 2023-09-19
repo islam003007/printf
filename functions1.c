@@ -3,12 +3,30 @@
 /**
  * print_int - prints an int.
  *
+ * @v: inputs va_list.
+ *
+ * Return: number of printed characters.
+*/
+
+int print_int(va_list v)
+{
+	int num = (int)va_arg(v, int);
+	int sum = 0;
+
+	sum += handle_int(num);
+
+	return (sum);
+}
+
+/**
+ * handle_int - prints an int.
+ *
  * @num: inputs int.
  *
  * Return: number of printed characters.
 */
 
-int print_int(int num)
+int handle_int(int num)
 {
 	int sum = 0;
 	unsigned int temp = num;
@@ -21,7 +39,7 @@ int print_int(int num)
 	}
 
 	if (temp / 10)
-		sum += print_int(temp / 10);
+		sum += handle_int(temp / 10);
 
 	_putchar((temp % 10) + '0');
 	sum++;
@@ -32,13 +50,14 @@ int print_int(int num)
 /**
  * print_binary - prints unsigned int in binary format.
  *
- * @num: inputs unsigned int
+ * @v: inputs va_list.
  *
  * Return: number of printed characters.
 */
 
-int print_binary(unsigned int num)
+int print_binary(va_list v)
 {
+	unsigned int num = (unsigned int)va_arg(v, unsigned int);
 	char binary[32];
 	int i, binary_length = 0;
 
@@ -64,13 +83,15 @@ int print_binary(unsigned int num)
 /**
  * print_char - prints a character.
  *
- * @c: inputs char.
+ * @v: inputs va_list.
  *
  * Return: number of printed characters (always 1).
 */
 
-int print_char(char c)
+int print_char(va_list v)
 {
+	char c = (char)va_arg(v, int);
+
 	_putchar(c);
 
 	return (1);
@@ -79,13 +100,14 @@ int print_char(char c)
 /**
  * print_string - prints a string.
  *
- * @str: inputs char pointer.
+ * @v: inputs va_list.
  *
  * Return: number of printed characters.
 */
 
-int print_string(char *str)
+int print_string(va_list v)
 {
+	char *str = (char *)va_arg(v, char *);
 	int i;
 
 	if (str == NULL)
@@ -97,46 +119,4 @@ int print_string(char *str)
 	}
 
 	return (i);
-}
-
-/**
- * print_format - prints based of format specifier
- *
- * @c: inputs format specefier.
- * @v: inputs va_list
- *
- * Return: number of printed characters.
-*/
-
-int print_format(char c, va_list v)
-{
-	int sum = 0;
-
-	switch (c)
-			{
-			case 'c':
-					sum += print_char((char)va_arg(v, int));
-					break;
-			case 's':
-					sum += print_string((char *)va_arg(v, char *));
-					break;
-			case '%':
-					_putchar('%');
-					sum++;
-					break;
-			case 'i':
-			case 'd':
-					sum += print_int((int)va_arg(v, int));
-					break;
-			case 'b':
-					sum += print_binary((unsigned int)va_arg(v, unsigned int));
-					break;
-			default:
-					_putchar('%');
-					_putchar(c);
-					sum += 2;
-					break;
-			}
-
-	return (sum);
 }
