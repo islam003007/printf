@@ -92,7 +92,7 @@ int print_pointer(va_list v)
 		_putchar(')');
 
 		return (5);
-	}	
+	}
 	_putchar('0');
 	_putchar('x');
 
